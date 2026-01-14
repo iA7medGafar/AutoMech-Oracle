@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMech Oracle AI - سوق قطع غيار السيارات</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#FF5F15',
+                        dark: '#121212',
+                    },
+                    fontFamily: {
+                        arabic: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-white font-arabic">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row items-center justify-between mb-16">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-secondary">AutoMech Oracle AI</h1>
+                <p class="text-xl mb-8">مساعدك الذكي لاكتشاف وشراء قطع غيار السيارات</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#scan" class="bg-secondary hover:bg-orange-600 text-black font-bold py-3 px-6 rounded-lg text-center transition-colors">
+                        <i data-feather="camera" class="inline mr-2"></i> مسح الآن
+                    </a>
+                    <a href="#how-it-works" class="border-2 border-secondary hover:bg-secondary hover:text-black font-bold py-3 px-6 rounded-lg text-center transition-colors">
+                        <i data-feather="info" class="inline mr-2"></i> كيف يعمل
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="http://static.photos/automotive/1200x630/1" alt="Car parts" class="rounded-xl shadow-2xl border-2 border-secondary">
+            </div>
+        </section>
+
+        <!-- AI Scanner Section -->
+        <section id="scan" class="mb-16 py-12 px-6 bg-gray-900 rounded-2xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-secondary">
+                    <i data-feather="search" class="inline mr-2"></i> ماسح الذكاء الاصطناعي
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">قم بمسح قطعة الغيار أو لوحة VIN وسنقوم بالباقي</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Camera Feed -->
+                <div class="lg:w-1/2 bg-black rounded-xl overflow-hidden relative" style="min-height: 400px;">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-feather="camera" class="w-16 h-16 mx-auto text-gray-600 mb-4"></i>
+                            <p class="text-gray-400">جارٍ تشغيل الكاميرا...</p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+                        <label class="bg-secondary text-black p-4 rounded-full hover:bg-orange-600 transition-colors cursor-pointer">
+                            <i data-feather="camera" class="w-6 h-6"></i>
+                            <input type="file" accept="image/*" capture="environment" class="hidden" id="camera-input">
+                        </label>
+                    </div>
+</div>
+
+                <!-- Results Panel -->
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 p-6 rounded-xl h-full">
+                        <h3 class="text-xl font-bold mb-4 text-secondary">النتائج المتوقعة</h3>
+                        
+                        <div class="mb-6 p-4 bg-gray-700 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <div class="w-3 h-3 rounded-full bg-secondary mr-2"></div>
+                                <h4 class="font-bold">مضخة مياه</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">تم التعرف على القطعة بنسبة 92%</p>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-4 text-secondary">القطع المتعلقة (محرك التنبؤ)</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="rounded text-secondary mr-3" checked>
+                                    <div>
+                                        <p class="font-medium">حزام التوقيت</p>
+                                        <p class="text-xs text-gray-400">ينصح باستبداله مع مضخة المياه</p>
+                                    </div>
+                                </div>
+                                <span class="text-secondary">+</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="rounded text-secondary mr-3" checked>
+                                    <div>
+                                        <p class="font-medium">سائل التبريد</p>
+                                        <p class="text-xs text-gray-400">يجب استبداله عند تغيير المضخة</p>
+                                    </div>
+                                </div>
+                                <span class="text-secondary">+</span>
+                            </div>
+                        </div>
+
+                        <button class="w-full mt-6 bg-secondary hover:bg-orange-600 text-black font-bold py-3 px-4 rounded-lg transition-colors">
+                            <i data-feather="shopping-cart" class="inline mr-2"></i> أضف إلى طلب الأسعار
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-secondary">
+                    <i data-feather="zap" class="inline mr-2"></i> كيف يعمل نظامنا
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">تقنية الذكاء الاصطناعي المتطورة لخدمة احتياجاتك</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-secondary text-black rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="camera" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. المسح الضوئي</h3>
+                    <p class="text-gray-300">قم بمسح قطعة الغيار أو لوحة VIN باستخدام كاميرا هاتفك</p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-secondary text-black rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. التحليل الذكي</h3>
+                    <p class="text-gray-300">يقوم الذكاء الاصطناعي بالتعرف على القطعة وتوقع الأعطال المرتبطة</p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-secondary text-black rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="dollar-sign" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. الحصول على عروض</h3>
+                    <p class="text-gray-300">استقبال عروض الأسعار من المتاجر المحلية في دقائق</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+</body>
+</html>
